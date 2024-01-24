@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umm</title>
+    <link rel="icon" type="image/png" href="https://www.lamborghini.com/ico/favicon-32x32.png" sizes="32x32"/>
+    <title>Automobilli Lamborghini</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Roboto:wght@100;300;500;700;900&display=swap');
+        *{
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            color: white;
+            background-color: rgb(38, 38, 38);
+        }
+        .aboutus{
+            /* display: flex; */
+            /* flex-direction: row; */
+            padding: 15px;
+            border: 3px solid darkgray;
+            background-color: darkmagenta;
+            margin: 4px;
+            border-radius: 8px;    
+        }
+        .aboutus > ul > li{
+            list-style: none;
+            padding-right: 15px;
+        }
+        .aboutus > ul > li > a{
+            text-decoration: underline;
+            color: white;
+            font-size: 20px;
+        }
+        .aboutus > ul{
+            display: flex;
+        }
+        .mainP{
+            margin: 4px;
+            border-radius: 8px;
+            border: 2px solid gray;
+            height: fit-content;
+            
+        }
+        .aboutCompany{
+            display: grid;
+            /* border: 1px solid; */
+            grid-template-columns: auto auto;
+            grid-template-rows: 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh 6vh;
+            margin: 10px;
+            margin-top: 0px;
+            padding: 15px;
+            padding-top: 25px;
+            /* align-items: center; */
+            gap:20px;
+        }
+        img{
+            margin: 15px;
+        }
+    </style>
 </head>
 <body>
-    <p>Hi this is an emoty page</p>
+    <nav class="aboutus">
+        <ul>
+            <li>
+                <a href="http://lamborghini.com/">Main Page</a>
+                </li>
+            <li>
+                <a href="/index.html">About Us</a>
+                </li>
+        </ul>
+    </nav>
+    <div class="mainP">
+        
+        
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/df/Lamborghini_Logo.svg" alt="Lamborghini_Logo" width="120" style="float: right;">
+        <div class="aboutCompany">
+            <p>Company Name: </p>
+            <p>Automobili Lamborghini S.p.A.</p>
+            <p>Company type: </p>
+            <p>Subsidiary</p>
+            <p>Founded:</p>
+            <p>1963</p>
+            <p>Founder: </p>
+            <p>Ferruccio Lamborghini</p>
+            <p>Headquarters: </p>
+            <p>Sant'Agata Bolognese, Emilia-Romagna, Italy</p>
+            <p>Owner: </p>
+            <p>Volkswagen Group</p>
+            <p>Parent: </p>
+            <p>Audi AG</p>
+            <p>Subsidiaries: </p>
+            <p>Ducati Motor Holding S.p.A.
+                Italdesign Giugiaro</p>
+        </div>
+    </div>
 </body>
 </html>
