@@ -1,104 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://www.lamborghini.com/ico/favicon-32x32.png" sizes="32x32"/>
-    <title>Automobilli Lamborghini</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Roboto:wght@100;300;500;700;900&display=swap');
-        *{
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            color: white;
-            background-color: rgb(38, 38, 38);
-        }
-        .aboutus{
-            /* display: flex; */
-            /* flex-direction: row; */
-            padding: 15px;
-            border: 3px solid darkgray;
-            background-color: darkmagenta;
-            margin: 4px;
-            border-radius: 8px;    
-        }
-        .aboutus > ul > li{
-            list-style: none;
-            padding-right: 15px;
-        }
-        .aboutus > ul > li > a{
-            text-decoration: underline;
-            color: white;
-            font-size: 20px;
-        }
-        .aboutus > ul{
-            display: flex;
-        }
-        .mainP{
-            margin: 4px;
-            border-radius: 8px;
-            border: 2px solid gray;
-            height: fit-content;
-            
-        }
-        .aboutCompany{
-            display: grid;
-            /* border: 1px solid; */
-            grid-template-columns: auto auto;
-            grid-template-rows: 6vh 6vh 6vh 6vh 6vh 6vh 6vh 10vh;
-            margin: 10px;
-            margin-top: 0px;
-            padding: 15px;
-            padding-top: 25px;
-            /* align-items: center; */
-            gap:40px;
-        }
-        img{
-            margin: 15px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy - E-Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f2f3f5;
+      color: #222;
+    }
+
+    header {
+      background: #232f3e;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    #search {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      width: 220px;
+      max-width: 60%;
+    }
+
+    #cart {
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+    }
+
+    .product p {
+      margin: 5px 0;
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #cart-details {
+      background: white;
+      margin: 20px auto;
+      padding: 15px;
+      width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    #cart-details ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cart-details li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    #cart-details li button {
+      background: #dc3545;
+      padding: 5px 8px;
+      font-size: 0.8em;
+      border-radius: 6px;
+    }
+
+    .checkout-btn {
+      background: #28a745;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      background: #232f3e;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      #search {
+        width: 100%;
+      }
+      #cart-details {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="aboutus">
-        <ul>
-            <li>
-                <a href="http://lamborghini.com/">Main Page</a>
-                </li>
-            <li>
-                <a href="/index.html">About Us</a>
-                </li>
-        </ul>
-    </nav>
-    <div class="mainP">
-        
-        
-               
-        
-        
-        <div class="aboutCompany">
-            <p>Company Name: </p>
-            <p>Automobili Lamborghini S.p.A.</p>
-            <p>Company type: </p>
-            <p>Subsidiary</p>
-            <p>Founded:</p>
-            <p>1963</p>
-            <p>Founder: </p>
-            <p>Ferruccio Lamborghini</p>
-            <p>Headquarters: </p>
-            <p>Sant'Agata Bolognese, Emilia-Romagna, Italy</p>
-            <p>Owner: </p>
-            <p>Volkswagen Group</p>
-            <p>Parent: </p>
-            <p>Audi AG</p>
-            <p>Subsidiaries: </p>
-            <p>Ducati Motor Holding S.p.A.
-                Italdesign Giugiaro</p>
-        </div>
-        <div style="display: flex;justify-content: center;"><img src="https://upload.wikimedia.org/wikipedia/en/d/df/Lamborghini_Logo.svg" alt="Lamborghini_Logo" width="120" align="center"></div> 
-        
-    </div>
+  <header>
+    <h1>ShopEasy</h1>
+    <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
+    <div id="cart">🛒 Cart: <span id="cart-count">0</span></div>
+  </header>
+
+  <main>
+    <section class="products" id="product-list"></section>
+
+    <section id="cart-details" class="hidden">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 ShopEasy | Built with ❤️ using Poppins font</p>
+  </footer>
+
+  <script>
+    const products = [
+      { name: "Wireless Earbuds", price: 1499, img: "https://via.placeholder.com/200" },
+      { name: "Smart Watch", price: 2999, img: "https://via.placeholder.com/200" },
+      { name: "Bluetooth Speaker", price: 1999, img: "https://via.placeholder.com/200" },
+      { name: "Phone Stand", price: 499, img: "https://via.placeholder.com/200" },
+      { name: "Power Bank", price: 1299, img: "https://via.placeholder.com/200" },
+      { name: "USB-C Cable", price: 299, img: "https://via.placeholder.com/200" },
+      { name: "Laptop Sleeve", price: 899, img: "https://via.placeholder.com/200" },
+      { name: "Wireless Mouse", price: 699, img: "https://via.placeholder.com/200" }
+    ];
+
+    let cart = [];
+    let total = 0;
+
+    function loadProducts(list = products) {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = "";
+      list.forEach(p => {
+        const div = document.createElement("div");
+        div.classList.add("product");
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>₹${p.price}</p>
+          <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        `;
+        productList.appendChild(div);
+      });
+    }
+
+    function searchProducts() {
+      const query = document.getElementById("search").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      loadProducts(filtered);
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) existing.qty++;
+      else cart.push({ name, price, qty: 1 });
+      updateCart();
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartCount = document.getElementById("cart-count");
+      const cartItems = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+      const cartSection = document.getElementById("cart-details");
+
+      if (cart.length === 0) {
+        cartSection.classList.add("hidden");
+        cartCount.innerText = 0;
+        total = 0;
+        return;
+      }
+
+      cartSection.classList.remove("hidden");
+      cartItems.innerHTML = "";
+      total = 0;
+      let count = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.name} (x${item.qty}) - ₹${item.price * item.qty}
+          <button onclick="removeFromCart('${item.name}')">❌</button>
+        `;
+        cartItems.appendChild(li);
+      });
+
+      cartCount.innerText = count;
+      cartTotal.innerText = total;
+    }
+
+    function checkout() {
+      alert("Thank you for shopping! Total: ₹" + total);
+      cart = [];
+      updateCart();
+    }
+
+    loadProducts();
+  </script>
 </body>
 </html>
