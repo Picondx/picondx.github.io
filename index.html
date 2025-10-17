@@ -5,17 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ShopEasy - E-Commerce</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    body {
-      margin: 0;
-      background: #f2f3f5;
-      color: #222;
-    }
+    body { margin: 0; background: #f4f6f8; color: #222; }
 
     header {
       background: #232f3e;
@@ -25,150 +19,56 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5em;
-      font-weight: 600;
-    }
+    header h1 { margin: 0; font-size: 1.5em; font-weight: 600; }
+    #search { padding: 8px 14px; border-radius: 20px; border: none; outline: none; width: 220px; max-width: 60%; }
+    #cart { font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    #cart i { font-size: 1.2em; }
 
-    #search {
-      padding: 8px 14px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-      width: 220px;
-      max-width: 60%;
-    }
+    main { padding: 20px; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .product { background: white; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .product:hover { transform: scale(1.04); }
+    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+    .product h3 { margin: 10px 0 5px; font-size: 1.1em; }
+    .product p { margin: 5px 0; color: #007bff; font-weight: 600; }
+    button { background: #007bff; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; transition: 0.2s; }
+    button:hover { background: #0056b3; }
 
-    #cart {
-      font-weight: 600;
-      cursor: pointer;
-    }
+    #cart-details { background: white; margin: 20px auto; padding: 15px; width: 350px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    #cart-details ul { list-style: none; padding: 0; margin: 0; }
+    #cart-details li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.95em; }
+    #cart-details li button { background: #dc3545; padding: 5px 8px; font-size: 0.8em; border-radius: 6px; }
+    .checkout-btn { background: #28a745; margin-top: 10px; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 8px; }
 
-    main {
-      padding: 20px;
-    }
+    .hidden { display: none; }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+    footer { background: #232f3e; color: white; text-align: center; padding: 10px; font-size: 14px; }
 
-    .product {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
+    /* Modal Styles */
+    .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+    .modal-content { background-color: #fff; margin: 10% auto; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; position: relative; }
+    .modal-content h2 { margin-top: 0; }
+    .modal-content input { width: 100%; padding: 10px; margin: 8px 0; border-radius: 6px; border: 1px solid #ccc; }
+    .modal-content button { margin-top: 10px; }
+    .close { position: absolute; top: 10px; right: 15px; font-size: 1.2em; cursor: pointer; }
 
-    .product:hover {
-      transform: scale(1.05);
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .product h3 {
-      margin: 10px 0 5px;
-      font-size: 1.1em;
-    }
-
-    .product p {
-      margin: 5px 0;
-      color: #007bff;
-      font-weight: 600;
-    }
-
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-
-    #cart-details {
-      background: white;
-      margin: 20px auto;
-      padding: 15px;
-      width: 350px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    #cart-details ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    #cart-details li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 0.95em;
-    }
-
-    #cart-details li button {
-      background: #dc3545;
-      padding: 5px 8px;
-      font-size: 0.8em;
-      border-radius: 6px;
-    }
-
-    .checkout-btn {
-      background: #28a745;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    footer {
-      background: #232f3e;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-    }
-
-    /* Responsive */
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      #search {
-        width: 100%;
-      }
-      #cart-details {
-        width: 90%;
-      }
+      header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      #search { width: 100%; }
+      #cart-details { width: 90%; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>ShopEasy</h1>
+    <h1><i class="fa-solid fa-store"></i> ShopEasy</h1>
     <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
-    <div id="cart">🛒 Cart: <span id="cart-count">0</span></div>
+    <div id="cart"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></div>
   </header>
 
   <main>
@@ -178,7 +78,7 @@
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
       <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
-      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+      <button class="checkout-btn" onclick="openModal()"><i class="fa-solid fa-credit-card"></i> Pay via BillDesk</button>
     </section>
   </main>
 
@@ -186,16 +86,31 @@
     <p>© 2025 ShopEasy | Built with ❤️ using Poppins font</p>
   </footer>
 
+  <!-- Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>BillDesk Payment</h2>
+      <p>Total Amount: ₹<span id="modal-total">0</span></p>
+      <input type="text" placeholder="Name on Card" id="card-name">
+      <input type="text" placeholder="Card Number" id="card-number">
+      <input type="text" placeholder="Expiry (MM/YY)" id="card-expiry">
+      <input type="text" placeholder="CVV" id="card-cvv">
+      <button onclick="confirmPayment()"><i class="fa-solid fa-check"></i> Confirm Payment</button>
+      <button style="background:#dc3545;" onclick="closeModal()"><i class="fa-solid fa-times"></i> Cancel</button>
+    </div>
+  </div>
+
   <script>
     const products = [
-      { name: "Wireless Earbuds", price: 1499, img: "https://via.placeholder.com/200" },
-      { name: "Smart Watch", price: 2999, img: "https://via.placeholder.com/200" },
-      { name: "Bluetooth Speaker", price: 1999, img: "https://via.placeholder.com/200" },
-      { name: "Phone Stand", price: 499, img: "https://via.placeholder.com/200" },
-      { name: "Power Bank", price: 1299, img: "https://via.placeholder.com/200" },
-      { name: "USB-C Cable", price: 299, img: "https://via.placeholder.com/200" },
-      { name: "Laptop Sleeve", price: 899, img: "https://via.placeholder.com/200" },
-      { name: "Wireless Mouse", price: 699, img: "https://via.placeholder.com/200" }
+      { name: "Wireless Earbuds", price: 1499, img: "https://m.media-amazon.com/images/I/61D4Z3yKPAL._AC_UY218_.jpg" },
+      { name: "Smart Watch", price: 2999, img: "https://m.media-amazon.com/images/I/61IMRs+o0iL._AC_UY218_.jpg" },
+      { name: "Bluetooth Speaker", price: 1999, img: "https://m.media-amazon.com/images/I/71rXSVqET9L._AC_UY218_.jpg" },
+      { name: "Phone Stand", price: 499, img: "https://m.media-amazon.com/images/I/71Lx0i0lU9L._AC_UY218_.jpg" },
+      { name: "Power Bank", price: 1299, img: "https://m.media-amazon.com/images/I/61drpi3cYUL._AC_UY218_.jpg" },
+      { name: "USB-C Cable", price: 299, img: "https://m.media-amazon.com/images/I/61FYqv80LGL._AC_UY218_.jpg" },
+      { name: "Laptop Sleeve", price: 899, img: "https://m.media-amazon.com/images/I/71r-pFR7jxL._AC_UY218_.jpg" },
+      { name: "Wireless Mouse", price: 699, img: "https://m.media-amazon.com/images/I/61LtuGzXeaL._AC_UY218_.jpg" }
     ];
 
     let cart = [];
@@ -211,7 +126,7 @@
           <img src="${p.img}" alt="${p.name}">
           <h3>${p.name}</h3>
           <p>₹${p.price}</p>
-          <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
+          <button onclick="addToCart('${p.name}', ${p.price})"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
         `;
         productList.appendChild(div);
       });
@@ -259,7 +174,7 @@
         const li = document.createElement("li");
         li.innerHTML = `
           ${item.name} (x${item.qty}) - ₹${item.price * item.qty}
-          <button onclick="removeFromCart('${item.name}')">❌</button>
+          <button onclick="removeFromCart('${item.name}')"><i class="fa-solid fa-trash"></i></button>
         `;
         cartItems.appendChild(li);
       });
@@ -268,10 +183,27 @@
       cartTotal.innerText = total;
     }
 
-    function checkout() {
-      alert("Thank you for shopping! Total: ₹" + total);
+    // Modal functions
+    const modal = document.getElementById("paymentModal");
+    const modalTotal = document.getElementById("modal-total");
+
+    function openModal() {
+      modal.style.display = "block";
+      modalTotal.innerText = total;
+    }
+
+    function closeModal() { modal.style.display = "none"; }
+
+    function confirmPayment() {
+      alert("Payment Successful! 💳\nTotal Paid: ₹" + total);
       cart = [];
       updateCart();
+      closeModal();
+    }
+
+    // Close modal when clicking outside content
+    window.onclick = function(event) {
+      if(event.target == modal) modal.style.display = "none";
     }
 
     loadProducts();
